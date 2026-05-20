@@ -1,0 +1,47 @@
+@page "/section/{Id}"
+
+@if (_isLoading)
+{
+    <LoadingSpinner Text="Loading section..." />
+}
+else if (_section is null)
+{
+    <div class="error-message">
+        <p>Section not found</p>
+        <a href="/">Back to home</a>
+    </div>
+}
+else
+{
+    <div class="section-header" style="--section-color: @_section.PrimaryColor">
+        <a href="/" class="back-link">← Back</a>
+        <div class="section-title-row">
+            <div class="section-dot"></div>
+            <h1>@_section.Name</h1>
+        </div>
+    </div>
+
+    <div class="search-bar">
+        <input type="text"
+               placeholder="Filter projects..."
+               @bind="_filterQuery"
+               @bind:event="oninput" />
+    </div>
+
+    @foreach (Category category in _categories.Where(c => c.SectionId == Id))
+    {
+        List<Project> categoryProjects = GetProjectsForCategory(category.Id);
+        @if (categoryProjects.Count > 0)
+        {
+            <div class="category-group">
+                <h2 class="category-name">@category.Name <span class="category-count">(@categoryProjects.Count)</span></h2>
+                <div class="projects-grid">
+                    @foreach (Project project in categoryProjects)
+                    {
+                        <ProjectCard Project="project" />
+                    }
+                </div>
+            </div>
+        }
+    }
+}

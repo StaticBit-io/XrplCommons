@@ -1,0 +1,18 @@
+@{
+    string cssClass = Status switch
+    {
+        ProjectStatus.Active => "badge badge-active",
+        ProjectStatus.Inactive => "badge badge-inactive",
+        ProjectStatus.PreLaunch => "badge badge-prelaunch",
+        ProjectStatus.Paid => "badge badge-paid",
+        _ => "badge"
+    };
+
+    string label = Status switch
+    {
+        ProjectStatus.PreLaunch => "Pre-launch",
+        _ => Status.ToString()
+    };
+}
+
+<span class="@cssClass">@label</span>

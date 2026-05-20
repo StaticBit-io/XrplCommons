@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/XrplCommons.Blazor/XrplCommons.Blazor.csproj" />
+    <Project Path="src/XrplCommons.Blazor.Server/XrplCommons.Blazor.Server.csproj" />
+    <Project Path="src/XrplCommons.Client.Tests/XrplCommons.Client.Tests.csproj" />
+    <Project Path="src/XrplCommons.Client/XrplCommons.Client.csproj" />
+  </Folder>
+</Solution>

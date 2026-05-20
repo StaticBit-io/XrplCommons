@@ -1,0 +1,57 @@
+@page "/"
+
+<div class="page-header">
+    <h1>XRPL Ecosystem</h1>
+    <p class="page-subtitle">Explore projects, tools, and protocols built on the XRP Ledger</p>
+</div>
+
+<div class="search-bar">
+    <input type="text"
+           placeholder="Search by name, description, tags, or status..."
+           @bind="_searchQuery"
+           @bind:event="oninput" />
+</div>
+
+@if (_isLoading)
+{
+    <LoadingSpinner Text="Loading ecosystem data..." />
+}
+else if (_error is not null)
+{
+    <div class="error-message">
+        <p>Failed to load data: @_error</p>
+        <button @onclick="LoadDataAsync">Retry</button>
+    </div>
+}
+else
+{
+    @if (!string.IsNullOrWhiteSpace(_searchQuery))
+    {
+        <div class="search-results">
+            <h2>Search results for "@_searchQuery"</h2>
+            <div class="projects-grid">
+                @foreach (Project project in FilteredProjects)
+                {
+                    <ProjectCard Project="project" />
+                }
+            </div>
+            @if (!FilteredProjects.Any())
+            {
+                <p class="no-results">No projects found</p>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="sections-grid">
+            @foreach (Section item in _sections)
+            {
+                <a href="/section/@item.Id" class="section-card" style="--section-color: @item.PrimaryColor">
+                    <div class="section-accent"></div>
+                    <h2 class="section-name">@item.Name</h2>
+                    <span class="section-count">@GetCategoryCount(item.Id) categories</span>
+                </a>
+            }
+        </div>
+    }
+}

@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <AssemblyName>XrplCommons.Blazor.Server</AssemblyName>
+    <RootNamespace>XrplCommons.Blazor.Server</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XrplCommons.Blazor\XrplCommons.Blazor.csproj" />
+    <ProjectReference Include="..\XrplCommons.Client\XrplCommons.Client.csproj" />
+  </ItemGroup>
+</Project>

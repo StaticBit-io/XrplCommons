@@ -1,0 +1,82 @@
+@page "/project/{Slug}"
+
+@if (_isLoading)
+{
+    <LoadingSpinner Text="Loading project..." />
+}
+else if (_project is null)
+{
+    <div class="error-message">
+        <p>Project not found</p>
+        <a href="/">Back to home</a>
+    </div>
+}
+else
+{
+    <a href="javascript:history.back()" class="back-link">← Back</a>
+
+    <div class="project-detail">
+        <div class="project-header">
+            @if (!string.IsNullOrWhiteSpace(_project.Logo))
+            {
+                <img src="@_project.Logo" alt="@_project.Name" class="project-logo" />
+            }
+            <div class="project-info">
+                <h1>@_project.Name</h1>
+                <StatusBadge Status="_project.Status" />
+            </div>
+        </div>
+
+        <p class="project-description">@_project.Description</p>
+
+        <div class="project-meta">
+            @if (_project.LaunchDate.HasValue)
+            {
+                <div class="meta-item">
+                    <span class="meta-label">Launch Date</span>
+                    <span class="meta-value">@_project.LaunchDate.Value.ToString("MMMM yyyy")</span>
+                </div>
+            }
+
+            @if (_categoryName is not null)
+            {
+                <div class="meta-item">
+                    <span class="meta-label">Category</span>
+                    <span class="meta-value">@_categoryName</span>
+                </div>
+            }
+        </div>
+
+        @if (_project.Tags is { Count: > 0 })
+        {
+            <div class="project-tags">
+                <span class="meta-label">Tags</span>
+                <div class="tags-list">
+                    @foreach (string tag in _project.Tags)
+                    {
+                        <span class="tag">#@tag</span>
+                    }
+                </div>
+            </div>
+        }
+
+        <div class="project-links">
+            @if (!string.IsNullOrWhiteSpace(_project.Url))
+            {
+                <a href="@_project.Url" target="_blank" rel="noopener noreferrer" class="link-button">
+                    🌐 Website
+                </a>
+            }
+
+            @if (_project.Github is not null)
+            {
+                @foreach (string github in _project.Github)
+                {
+                    <a href="@github" target="_blank" rel="noopener noreferrer" class="link-button link-github">
+                        GitHub
+                    </a>
+                }
+            }
+        </div>
+    </div>
+}

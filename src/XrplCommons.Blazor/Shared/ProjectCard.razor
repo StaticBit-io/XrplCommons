@@ -1,0 +1,19 @@
+<a href="/project/@Project.Slug" class="project-card">
+    <div class="card-logo">
+        @if (!string.IsNullOrWhiteSpace(Project.Logo))
+        {
+            <img src="@Project.Logo" alt="@Project.Name" loading="lazy" />
+        }
+        else
+        {
+            <div class="logo-placeholder">@(Project.Name.Length > 0 ? Project.Name[0].ToString() : "?")</div>
+        }
+    </div>
+    <div class="card-body">
+        @if (!Project.HideName)
+        {
+            <h3 class="card-title">@Project.Name</h3>
+        }
+        <StatusBadge Status="Project.Status" />
+    </div>
+</a>

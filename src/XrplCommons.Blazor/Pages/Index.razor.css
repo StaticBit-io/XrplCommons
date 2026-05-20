@@ -1,0 +1,120 @@
+.page-header {
+    margin-bottom: 24px;
+}
+
+.page-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+}
+
+.page-subtitle {
+    color: var(--text-secondary);
+    margin-top: 4px;
+}
+
+.search-bar {
+    margin-bottom: 32px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 12px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    color: var(--text-primary);
+    font-family: var(--font-family);
+    font-size: 14px;
+    outline: none;
+    transition: border-color var(--transition);
+}
+
+.search-bar input::placeholder {
+    color: var(--text-muted);
+}
+
+.search-bar input:focus {
+    border-color: var(--accent-green);
+}
+
+.sections-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+}
+
+.section-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    color: var(--text-primary);
+    transition: background var(--transition), border-color var(--transition);
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.section-card:hover {
+    background: var(--bg-card-hover);
+    border-color: #3A3A3A;
+    opacity: 1;
+}
+
+.section-accent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--section-color);
+}
+
+.section-name {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.section-count {
+    color: var(--text-secondary);
+    font-size: 13px;
+}
+
+.search-results h2 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 12px;
+}
+
+.no-results {
+    color: var(--text-secondary);
+    text-align: center;
+    padding: 40px 0;
+}
+
+.error-message {
+    text-align: center;
+    padding: 40px;
+    color: var(--accent-red);
+}
+
+.error-message button {
+    margin-top: 12px;
+    padding: 8px 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    color: var(--text-primary);
+    font-family: var(--font-family);
+    cursor: pointer;
+}
