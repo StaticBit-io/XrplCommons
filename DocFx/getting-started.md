@@ -5,7 +5,7 @@
 Install the NuGet package:
 
 ```bash
-dotnet add package XrplCommons.Client
+dotnet add package Staticbit.XrplCommons.Client
 ```
 
 ## Registration

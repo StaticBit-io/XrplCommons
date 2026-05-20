@@ -18,7 +18,7 @@
 ## Installation
 
 ```bash
-dotnet add package XrplCommons.Client
+dotnet add package Staticbit.XrplCommons.Client
 ```
 
 ## Quick Start
